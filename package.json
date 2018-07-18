@@ -7,6 +7,9 @@
     "name": "afei",
     "email": "1290657123@qq.com"
   },
+  "peerDependencies": {
+    "react": "^16.4.1"
+  },
   "main": "index.js",
   "license": "MIT"
 }
