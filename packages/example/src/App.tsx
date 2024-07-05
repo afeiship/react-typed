@@ -8,7 +8,7 @@ function App() {
         Build Time: {BUILD_TIME}
       </div>
       <h1>react-typed</h1>
-      <ReactTyped typedOptions={{ strings: ['Hello, World!', 'React Typed!', 'Welcome to React!'] }} />
+      <ReactTyped options={{ strings: ['Hello, World! Welcome to React Typed!'] }} />
     </div>
   );
 }
