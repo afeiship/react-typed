@@ -1,15 +1,20 @@
 {
-  "name": "react-default-node-name",
-  "version": "0.0.1",
-  "description": "Get default react tag for react web &amp; react native",
-  "homepage": "https://github.com/afeiship/react-default-node-name",
-  "author": {
-    "name": "afei",
-    "email": "1290657123@qq.com"
-  },
-  "peerDependencies": {
-    "react": "^16.4.1"
-  },
-  "main": "index.js",
-  "license": "MIT"
+  "name": "react-typed",
+  "version": "1.0.0",
+  "description": "React for Typed.js.",
+  "homepage": "https://js.work",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "cd packages/example && yarn run dev",
+    "predocs": "rm -rf docs && node scripts/markdown.js",
+    "docs": "cd packages/example && yarn run build",
+    "postdocs": "cp -R packages/example/dist docs",
+    "preln:build": "yarn run docs",
+    "ln:build": "cd packages/lib && yarn run build",
+    "ln:publish": "cd packages/lib && yarn run release"
+  }
 }
