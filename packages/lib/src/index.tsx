@@ -59,7 +59,7 @@ export default class ReactTyped extends Component<ReactTypedProps> {
   }
 
   componentWillUnmount() {
-    this.typed.destroy();
+    this.typed?.destroy();
   }
 
   render() {
