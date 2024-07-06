@@ -36,7 +36,7 @@ export default class ReactTyped extends Component<ReactTypedProps> {
   };
 
   private readonly rootRef: React.RefObject<HTMLDivElement>;
-  private typed: Typed;
+  private typed: Typed | null = null;
 
   get asProps() {
     const { as, options, className, ...rest } = this.props;
