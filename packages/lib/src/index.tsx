@@ -18,7 +18,7 @@ export type ReactTypedProps = {
    * The options for Typed.js.
    */
   options?: TypedOptions;
-} & HTMLAttributes<HTMLSpanElement>;
+} & HTMLAttributes<HTMLDivElement>;
 
 export default class ReactTyped extends Component<ReactTypedProps> {
   static displayName = CLASS_NAME;
@@ -30,7 +30,7 @@ export default class ReactTyped extends Component<ReactTypedProps> {
     },
   };
 
-  private readonly rootRef: React.RefObject<HTMLSpanElement>;
+  private readonly rootRef: React.RefObject<HTMLDivElement>;
   private typed: Typed;
 
   constructor(props: ReactTypedProps) {
@@ -50,9 +50,9 @@ export default class ReactTyped extends Component<ReactTypedProps> {
   render() {
     const { className, children, options, ...rest } = this.props;
     return (
-      <span ref={this.rootRef} data-component={CLASS_NAME} className={cx(CLASS_NAME, className)} {...rest}>
-        {children}
-      </span>
+      <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)} {...rest}>
+        <span ref={this.rootRef}>{children}</span>
+      </div>
     );
   }
 }
