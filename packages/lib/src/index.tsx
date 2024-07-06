@@ -1,6 +1,6 @@
 // import noop from '@jswork/noop';
 import cx from 'classnames';
-import React, { ReactNode, Component, HTMLAttributes } from 'react';
+import React, { ReactNode, Component, Fragment } from 'react';
 import Typed, { TypedOptions } from 'typed.js';
 
 const CLASS_NAME = 'react-typed';
@@ -15,15 +15,20 @@ export type ReactTypedProps = {
    */
   children?: ReactNode;
   /**
+   * The tag or component to render.
+   */
+  as: string | React.ComponentType<any>;
+  /**
    * The options for Typed.js.
    */
   options?: TypedOptions;
-} & HTMLAttributes<HTMLDivElement>;
+};
 
 export default class ReactTyped extends Component<ReactTypedProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
+    as: 'div',
     options: {
       loopCount: 1,
       typeSpeed: 30,
@@ -32,6 +37,16 @@ export default class ReactTyped extends Component<ReactTypedProps> {
 
   private readonly rootRef: React.RefObject<HTMLDivElement>;
   private typed: Typed;
+
+  get asProps() {
+    const { as, options, className, ...rest } = this.props;
+    if (as === Fragment) return rest;
+    return {
+      'data-component': CLASS_NAME,
+      className: cx(CLASS_NAME, className),
+      ...rest,
+    };
+  }
 
   constructor(props: ReactTypedProps) {
     super(props);
@@ -48,11 +63,12 @@ export default class ReactTyped extends Component<ReactTypedProps> {
   }
 
   render() {
-    const { className, children, options, ...rest } = this.props;
+    const { children } = this.props;
+    const AsTag = this.props.as;
     return (
-      <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)} {...rest}>
+      <AsTag {...this.asProps}>
         <span ref={this.rootRef}>{children}</span>
-      </div>
+      </AsTag>
     );
   }
 }
