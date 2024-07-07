@@ -32,8 +32,9 @@ export default class ReactTyped extends Component<ReactTypedProps> {
 
   componentDidMount() {
     const { children, ...options } = this.props;
+    const stringsElement = typeof children === 'undefined' ? undefined : `#${this.stringsId}`;
     this.typed = new Typed(this.typedRef.current, {
-      stringsElement: `#${this.stringsId}`,
+      stringsElement,
       ...options,
     });
   }
