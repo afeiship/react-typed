@@ -41,10 +41,7 @@ npm install -S @jswork/react-typed
           <p>此两者，同出而异名，同谓之玄，玄之又玄，众妙之门。</p>
         </ReactTyped>
         <hr />
-        <ReactTyped
-          strings={['Hello world, this is react-typed.']}
-          typeSpeed={100}
-          stringsElement={undefined} />
+        <ReactTyped strings={['Hello world, this is react-typed.']} typeSpeed={100} />
       </div>
     );
   }
