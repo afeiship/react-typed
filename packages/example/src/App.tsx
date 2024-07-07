@@ -8,7 +8,15 @@ function App() {
         Build Time: {BUILD_TIME}
       </div>
       <h1>react-typed</h1>
-      <ReactTyped options={{ strings: ['Hello, World! Welcome to React Typed!'] }} />
+      <ReactTyped>
+        <p>Typed.js is a <strong>JavaScript</strong> library.</p>
+        <p>It <em>types</em> out sentences.</p>
+        <p>You can <strong>customize</strong> the typing speed, backspacing speed, and more.</p>
+      </ReactTyped>
+      <hr/>
+      <ReactTyped>
+        <p>此两者，同出而异名，同谓之玄，玄之又玄，众妙之门。</p>
+      </ReactTyped>
     </div>
   );
 }
